@@ -9,7 +9,7 @@ public class Patient {
         //patient variables are made private to hide information
     private String first;
     private String last;
-    private String age;
+    private int age;
     private String sex;
         //string describing the reason the patient is admitted
     private String illness;
@@ -19,10 +19,10 @@ public class Patient {
     private String dateAdmitted;
         //hospital ward and room number
     private String ward;
-    private String room;
+    private int room;
     
         //simple constructor creating patient object using all patient information as parameters
-    public Patient(String first, String last, String age, String sex, String illness, String allergies, String dateAdmitted, String ward, String room){
+    public Patient(String first, String last, int age, String sex, String illness, String allergies, String dateAdmitted, String ward, int room){
         
         this.first = first;
         this.last = last;
@@ -60,11 +60,11 @@ public class Patient {
         this.last = last;
     }
 
-    public String getAge() {
+    public int getAge() {
         return age;
     }
 
-    public void setAge(String age) {
+    public void setAge(int age) {
         this.age = age;
     }
 
@@ -108,11 +108,11 @@ public class Patient {
         this.ward = ward;
     }
 
-    public String getRoom() {
+    public int getRoom() {
         return room;
     }
 
-    public void setRoom(String room) {
+    public void setRoom(int room) {
         this.room = room;
     }
 }
