@@ -3,6 +3,11 @@ package fx.test;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -60,10 +65,10 @@ public class NewPatientController implements Initializable {
             //text field input variables for patient information
         String first = firstIn.getText();
         String last = lastIn.getText();
-        String age = ageIn.getText();
+        int age = Integer.valueOf(ageIn.getText());
         String sex = sexIn.getText();
         String illness = illnessIn.getText();
-        String room = roomIn.getText();
+        int room = Integer.valueOf(roomIn.getText());
         String allergies = allergiesIn.getText();
         String ward = wardIn.getText();
         String date = DateIn.getText();
@@ -74,7 +79,7 @@ public class NewPatientController implements Initializable {
             //if statement checking that the required fields are filled
         if(first == null || first.isEmpty() || first.trim().isEmpty() && last == null || last.isEmpty() || last.trim().isEmpty() 
                 && illness == null || illness.isEmpty() || illness.trim().isEmpty() && ward == null || ward.isEmpty() || ward.trim().isEmpty() 
-                && room == null || room.isEmpty() || room.trim().isEmpty() && age == null || age.isEmpty() || age.trim().isEmpty())
+                && room < 0 && age < 1)
         {
             textOut.setText("Invalid Input: Not all required fields are filled in");
         }
@@ -94,7 +99,35 @@ public class NewPatientController implements Initializable {
             wardIn.setText("");
             DateIn.setText("");
 
-            //CODE FOR ADDING TO THE DATABASE HERE!!
+                //try catch to connect to database using URL, username and pass
+            String databaseURL = "jdbc:derby://localhost:1527/contact";
+       
+            try {
+                Connection connection = DriverManager.getConnection(databaseURL, "nbuser", "nbuser");
+                System.out.println("Connected to Database");
+
+                    //code to insert data into database table
+                    //uses string command with ? symbols to prepare statement using variables
+                String sql = "INSERT INTO NBUSER.PATIENTS (lastname, firstname, age, sex, illness, allergies, dateadmitted, ward, roomnumber) Values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                PreparedStatement p = connection.prepareStatement(sql);
+                    //sets ? symbols to variable values from user input
+                p.setString(1, last);
+                p.setString(2, first);
+                p.setInt(3, age);
+                p.setString(4, sex);
+                p.setString(5, illness);
+                p.setString(6, allergies);
+                p.setString(7, date);
+                p.setString(8, ward);
+                p.setInt(9, room);
+                    //executes update table command from sql string
+                p.executeUpdate();
+                p.close();
+
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+                System.out.println("Failed");
+            }
         
             
         }
