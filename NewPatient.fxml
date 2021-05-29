@@ -40,7 +40,7 @@
       <TextField fx:id="wardIn" layoutX="80.0" layoutY="191.0" promptText="Ward" />
       <TextField fx:id="allergiesIn" layoutX="80.0" layoutY="349.0" prefHeight="26.0" prefWidth="468.0" promptText="Allergies" />
       <TextField fx:id="DateIn" layoutX="80.0" layoutY="238.0" promptText="Date Admitted" />
-      <TextArea fx:id="textOut" layoutX="590.0" layoutY="59.0" prefHeight="483.0" prefWidth="360.0" style="-fx-font-size: 18;" />
+      <TextArea fx:id="textOut" editable="false" layoutX="590.0" layoutY="59.0" prefHeight="483.0" prefWidth="360.0" style="-fx-font-size: 18;" />
       <Button fx:id="buttonBack" layoutX="232.0" layoutY="525.0" onAction="#handleButtonBack" prefHeight="35.0" prefWidth="106.0" text="Back" />
       <Text layoutX="196.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 16;" text="Enter Patient Information" />
     </children>
