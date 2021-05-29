@@ -11,11 +11,11 @@
 
 <AnchorPane id="AnchorPane" prefHeight="636.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fx.test.PatientLookupController">
    <children>
-      <TextField fx:id="textName" layoutX="182.0" layoutY="101.0" promptText="Search by Name" />
+      <TextField fx:id="textName" layoutX="182.0" layoutY="101.0" promptText="Search by Last Name" />
       <TextField fx:id="textRoom" layoutX="182.0" layoutY="145.0" promptText="Search by Room" />
       <Button fx:id="buttonBack" layoutX="263.0" layoutY="577.0" mnemonicParsing="false" onAction="#handleButtonBack" prefHeight="25.0" prefWidth="74.0" text="Back" />
       <Button fx:id="buttonRoom" layoutX="375.0" layoutY="145.0" mnemonicParsing="false" onAction="#handleButtonRoom" prefHeight="25.0" prefWidth="74.0" text="Search" />
-      <TextArea fx:id="textOut" layoutX="54.0" layoutY="182.0" prefHeight="358.0" prefWidth="493.0" />
+      <TextArea fx:id="textOut" editable="false" layoutX="54.0" layoutY="182.0" prefHeight="358.0" prefWidth="493.0" style="-fx-font-size: 16;" />
       <MenuBar layoutY="2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
         <menus>
           <Menu mnemonicParsing="false" text="File">
