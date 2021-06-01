@@ -92,7 +92,6 @@ public class NewPatientController implements Initializable {
        
             try {
                 Connection connection = DriverManager.getConnection(databaseURL, "nbuser", "nbuser");
-                System.out.println("Connected to Database");
 
                     //code to insert data into database table
                     //uses string command with ? symbols to prepare statement using variables
@@ -114,7 +113,6 @@ public class NewPatientController implements Initializable {
 
             } catch (SQLException ex) {
                 ex.printStackTrace();
-                System.out.println("Failed");
             }
         
             
